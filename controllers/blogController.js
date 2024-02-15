@@ -3,7 +3,7 @@ const Blog = require('../models/blog');
 const blog_index = (req, res) => {
   Blog.find().sort({ createdAt: -1 })
     .then(result => {
-      res.render('index', { blogs: result, title: 'All blogs' });
+      res.render('index', { blogs: result, title: 'Todas as Notícias' });
     })
     .catch(err => {
       console.log(err);
@@ -14,16 +14,16 @@ const blog_details = (req, res) => {
   const id = req.params.id;
   Blog.findById(id)
     .then(result => {
-      res.render('details', { blog: result, title: 'Blog Details' });
+      res.render('details', { blog: result, title: 'Detalhes da Notícia' });
     })
     .catch(err => {
       console.log(err);
-      res.render('404', { title: 'Blog not found' });
+      res.render('404', { title: 'Página não Encontrada' });
     });
 }
 
 const blog_create_get = (req, res) => {
-  res.render('create', { title: 'Create a new blog' });
+  res.render('create', { title: 'Criar Nova Notícia' });
 }
 
 const blog_create_post = (req, res) => {
